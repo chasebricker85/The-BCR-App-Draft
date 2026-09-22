@@ -306,11 +306,17 @@ with vt2:
     for label, val in cost_rows:
         fig.add_trace(go.Bar(name=label, x=["Costs"], y=[val]))
 
-    fig.update_layout(**BASE, barmode="stack", height=440,   
-                        title=dict(text="Benefits and costs, by component."), 
-                        font=dict(size=16, color=NAVY), 
-                        yaxis=dict(title="Present value (dollars)", gridcolor=LIGHTISH), 
-                        legend=dict(orientation="v", x=1.02, y=1))
+    fig.update_layout(BASE)
+
+
+    fig.update_layout(
+            barmode="stack", 
+            height=440,
+            title=dict(text="Benefits and costs, by component."),
+            font=dict(size=16, color=NAVY),
+            yaxis=dict(title="Present value (dollars)", gridcolor=LIGHTISH),
+            legend=dict(orientation="v", x=1.02, y=1)
+      
     st.plotly_chart(fig, use_container_width=True)
     tot_b = result.pv_benefits
     tot_c = result.pv_costs
