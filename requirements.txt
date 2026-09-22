@@ -3,7 +3,7 @@
 # Left unpinned on purpose: Streamlit Community Cloud then installs versions
 # that match the Python it runs, which avoids the build errors that fixed
 # version pins can cause. shell_bcr_full_three.py needs nothing beyond the Python
-#standard library, so it is not listed.
+# standard library, so it is not listed.
 streamlit
 pandas
 plotly
