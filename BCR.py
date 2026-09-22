@@ -234,7 +234,7 @@ if result.schedule:
         "Benefits (present value)": f'${row["benefits_pv"]:,.0f}',
         "Costs (nominal)": f'${row["costs_nominal"]:,.0f}',
         "Costs (present value)": f'${row["costs_pv"]:,.0f}',
-    } for row in result.schedul]
+    } for row in result.schedule]
 
     st.dataframe(pd.DataFrame(srows), use_container_width=True, hide_index=True)
 
