@@ -310,7 +310,7 @@ with vt2:
                         title=dict(text="Benefits and costs, by component.", 
                                    font=dict(size=16, color=NAVY)), 
                         yaxis=dict(title="Present value (dollars)", gridcolor=NAVY), 
-                        legend=dict(orientation="v", x=1.02, y=1))
+                        legend=dict(orientation="v", x=1.02, y=1), color=NAVY)
     st.plotly_chart(fig, use_container_width=True)
     tot_b = result.pv_benefits
     tot_c = result.pv_costs
