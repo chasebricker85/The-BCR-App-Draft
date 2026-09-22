@@ -317,7 +317,7 @@ with vt2:
             yaxis=dict(title="Present value (dollars)", gridcolor=LIGHTISH),
             legend=dict(orientation="v", x=1.02, y=1))
       
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True, theme=None)
     tot_b = result.pv_benefits
     tot_c = result.pv_costs
     st.caption(f"Two stacked columns to the same scale: ${tot_b:,.0f} of "
