@@ -308,7 +308,7 @@ with vt2:
 
     fig.update_layout(**BASE, barmode="stack", height=440,   font_color="NAVY", 
                         title=dict(text="Benefits and costs, by component."), 
-                                   font=dict(size=16, color=NAVY)), 
+                        font=dict(size=16, color=NAVY), 
                         yaxis=dict(title="Present value (dollars)", gridcolor=LIGHTISH), 
                         legend=dict(orientation="v", x=1.02, y=1))
     st.plotly_chart(fig, use_container_width=True)
