@@ -36,8 +36,8 @@ def present_value(total: float, rate: float, years: int, mode: str) -> float:
     mode = normalize_mode(mode)
     if mode == MODE_PV:   # <--- Make sure this is the line with ==
         return total
-    per_year == annual_amount(total, years, mode)
-    last == _horizon(years)
+    per_year = annual_amount(total, years, mode)
+    last = _horizon(years)
     return sum(per_year * discount_factor(rate, t) for t in range(1, last + 1))
 
 @dataclass
