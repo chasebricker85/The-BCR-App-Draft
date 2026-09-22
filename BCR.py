@@ -306,7 +306,7 @@ with vt2:
     for label, val in cost_rows:
         fig.add_trace(go.Bar(name=label, x=["Costs"], y=[val]))
 
-    fig.update_layout(**BASE, barmode="stack", height=440,   font_color=NAVY, 
+    fig.update_layout(**BASE, barmode="stack", height=440,   
                         title=dict(text="Benefits and costs, by component."), 
                         font=dict(size=16, color=NAVY), 
                         yaxis=dict(title="Present value (dollars)", gridcolor=LIGHTISH), 
