@@ -400,7 +400,7 @@ with vt3:
             "year 0, so there is no year-by-year payback to trace. Set benefits to a recurring or " 
             "spread mode to see it."
         )
-"""
+
 #---WATERFALL TAB (vt4) ---
 with vt4:
         b = result.pv_benefits
@@ -425,6 +425,3 @@ with vt4:
         st.caption(f"The benefit total, the cost total taken out of it, and the net present value that "
                    f"remains. ${b:,.0f} minus ${c:,.0f} is ${b - c:,.0f}.") 
 
-
-
-"""
