@@ -8,7 +8,7 @@ import plotly.graph_objects as go
 
 from shell_bcr_full_three import run_categories, present_value
 
-st.set_page_config(page_title="IML Research Benefit-Cost Model-Shell with Categories", 
+st.set_page_config(page_title="Research Benefit-Cost Model", 
                    page_icon="chart_with_upwards_trend", layout="wide")
 
 st.title("IML Research Benefit-Cost Model Shell with Categories")
@@ -70,11 +70,11 @@ def describe_mode(mode: str, side: str) -> str:
 with st.sidebar:
     st.header("Analysis parameters")
 
-    b_choice = st.selectbox("Benefit totals are entered as:", MODE_LABEL, index=0)
+    b_choice = st.selectbox("Benefits", MODE_LABEL, index=0)
     benefit_mode = mode_from_label(b_choice)
 
     c_choice = st.selectbox(
-        "Cost totals are entered as:", MODE_LABEL, index=0,
+        "Costs", MODE_LABEL, index=0,
         help="Research and deployment money is usually spent up front, so this "
             "starts on the one-time lump sum. Change it only if cost really "
             "recurs or is spread across the horizon."
