@@ -11,7 +11,7 @@ from shell_bcr_full_three import run_categories, present_value
 st.set_page_config(page_title="Research Benefit-Cost Model", 
                    page_icon="chart_with_upwards_trend", layout="wide")
 
-st.title("IML Research Benefit-Cost Model Shell with Categories")
+st.title("Research Benefit-Cost Model")
 st.caption("Enter one total for each benefit-cost category for research return on investment. Any cost figure is a placeholder.")
 
 #BENEFITS
