@@ -389,7 +389,7 @@ with vt3:
             xaxis=dict(title="Year", gridcolor=LIGHTISH), 
             yaxis=dict(title="Cumulative present value of benefits (dollars)", gridcolor=LIGHTISH)
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, use_container_width=True, theme=None)
         st.caption(
             f"The green line is cumulative discounted benefit. The dotted orange line is total "
             f"cost (${result.pv_costs:,.0f}). Payback is the year the green line rises past it."
