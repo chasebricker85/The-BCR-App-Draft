@@ -337,18 +337,18 @@ with vt3:
         """
             FIRST_YEAR = None
     
-    def _payback_year(res):
-        total_cost = res.pv_costs
-        if total_cost <= 0:
-            return None
-        if not res.schedule:
-            return 0 if res.pv_benefits >= total_cost else None
-        cum_b = 0.0
-        for row in res.schedule:
-            cum_b += row["benefits_pv"]
-            if cum_b>= total_cost:
-                return row["year"]
-        return None
+  def _payback_year(res):
+    total_cost = res.pv_costs
+    if total_cost <= 0:
+      return None
+    if not res.schedule:
+      return 0 if res.pv_benefits >= total_cost else None
+    cum_b = 0.0
+    for row in res.schedule:
+      cum_b += row["benefits_pv"]
+        if cum_b>= total_cost:
+          return row["year"]
+    return None
 
     py = _payback_year(result)
     if py is None:
