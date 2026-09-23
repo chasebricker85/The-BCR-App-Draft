@@ -365,7 +365,7 @@ with vt3:
         years = [r["year"] for r in result.schedule]
         cum_b, running = [], 0.0
         for r in result.schedule:
-            running += r["benefits_pv"] * multiplier
+            running += r["benefits_pv"] 
             cum_b.append(running)
             
         fig = go.Figure()
