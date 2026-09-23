@@ -378,13 +378,14 @@ with vt3:
         
         if py is not None and py >= 1:
             fig.add_vline(x=py, line=dict(color=NAVY, width=2, dash="dash"))
-            
+
+        fig.update_layout(BASE)
+
         fig.update_layout(
             **BASE, height=380, showlegend=False, 
             title=dict(
                 text="Payback: cumulative benefit vs total cost", 
-                font=dict(size=16, color=NAVY)
-            ), 
+                font=dict(size=16, color=NAVY)), 
             xaxis=dict(title="Year", gridcolor=LIGHTISH), 
             yaxis=dict(title="Cumulative present value of benefits (dollars)", gridcolor=LIGHTISH)
         )
@@ -399,7 +400,7 @@ with vt3:
             "year 0, so there is no year-by-year payback to trace. Set benefits to a recurring or " 
             "spread mode to see it."
         )
-
+"""
 #---WATERFALL TAB (vt4) ---
 with vt4:
         b = result.pv_benefits
@@ -426,4 +427,4 @@ with vt4:
 
 
 
-
+"""
