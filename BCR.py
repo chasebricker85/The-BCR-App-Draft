@@ -61,9 +61,11 @@ def amount_noun(mode: str) -> str:
 
 def describe_mode(mode: str, side: str) -> str:
     return {
-        "pv": f"{side} are one-time lump sums, used as entered.",
+        "pv": f"{side} are one-time lump sums, used as entered.
+        ",
         "annual": f"{side} are a yearly amount, discounted over the horizon.", 
-        "spread": f"{side} are one lump sum spread across the horizon and discounted.",
+        "spread": f"{side} are one lump sum spread across the horizon and discounted.
+        ",
     }[mode]
 
 #PARAMETERS
