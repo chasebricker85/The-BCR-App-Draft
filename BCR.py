@@ -323,3 +323,91 @@ with vt2:
     st.caption(f"Two stacked columns to the same scale: ${tot_b:,.0f} of "
                f"benefits against ${tot_c:,.0f} of costs. The height "
                f"difference is the net present value.")
+
+"""EXTRA VISUALS WE CAN USE OR NOT USE DEPENDING"""
+#--- PAYBACK TAB (vt3) ---
+with vt3:
+            """
+        Cumulative attributed benefit against total cost, with the crossover marked.
+
+        The year the benefit line passes the cost line is the payback year, and it
+        is a figure people grasp immediately even when a ratio leaves them cold.
+        """
+            FIRST_YEAR = None
+    
+    def _payback_year(res):
+        total_cost = res.pv_costs
+        if total_cost <= 0:
+            return None
+        if not res.schedule:
+            return 0 if res.pv_benefits >= total_cost else None
+        cum_b = 0.0
+        for row in res.schedule:
+            cum_b += row["benefits_pv"]
+            if cum_b>= total_cost:
+                return row["year"]
+        return None
+
+    py = _payback_year(result)
+    if py is None:
+        shown = "Not within horizon"
+    elif FIRST_YEAR is not None:
+        shown = str(FIRST_YEAR + max(0, py - 1))
+    else:
+        shown = f"Year {py}"
+    st.metric("Payback year", shown)
+
+    if result.schedule:
+        years = [r["year"] for r in result.schedule]
+        cum_b, running = [], 0.0
+        for r in result.schedule:
+            running += r["benefit_pv"] * multiplier
+            cum_b.append(running)
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=years, y=cum_b, mode="lines", 
+                                 line=dict(color=GREEN, width=3),        
+name="Cumalitive benefits"))
+        fig.add_hline(y=result.pv_costs, line=dict(color=ORANGE, width=2, dash="dot"))
+        if py is not None and py >= 1:
+            fig.add_vline(x=py, line=dict(color=NAVY, width=2, dash="dash"))
+        fig.update_layout(**BASE, height=380, showlegend=False, 
+                        title=dict(text="Payback: cumulative benefit vs total cost", 
+                                     font=dict(size=16, color=NAVY)), 
+                        xaxis=dict(title="Year", gridcolor=LIGHTISH), 
+                        yaxis=dict(title="Cumulative present value of benefits (dollars)", gridcolor=LIGHTISH))
+        st.plotly_chart(fig, use_container_width=True)
+        st.caption(f"The green line is cumulative discounted benefit. The dotted orange line is total "
+                   f"cost (${result.pv_costs:,.0f}). Payback is the year the green line rises past it.")
+    else: 
+        st.caption("Payback needs benefits that arrive over time. In lump-sum mode everything lands at "
+                   "year 0, so there is no year-by-year payback to trace. Set benefits to a recurring or " 
+                    "spread mode to see it.")
+
+
+#---WATERFALL TAB (vt4) ---
+with vt4:
+        b = result.pv_benefits
+        c = result.pv_costs
+        fig = go.Figure(go.Waterfall(
+            orientation="v", 
+            measure=["absolute", "relative", "totals"],
+            x=["Present value<br>of benefits", "Less: costs", "Net present<br>value"],
+            y=[b, -c, None],
+            text=[f"${b:,.0f}", f"-${c:,.0f}", f"${b - c:,.0f}"],
+            textposition="outside", 
+            connector=dict(line=dict(color=GREY, width=1)),
+            increasing=dict(marker=dict(color=BLUE)),
+            decreasing=dict(marker=dict(color=ORANGE)),
+            totals=dict(marker=dict(color=GREEN))))
+        fig.update_layout(**BASE, height=400, showlegend=FALSE, 
+                          title=dict(text="How the result is built",
+    font=dict(size=16, color=NAVY)),
+                        yaxis=dict(title="Present value (dollars)",
+                                   gridcolor=LIGHTISH))
+        st.plotly_chart(fig, use_container_width=True)
+        st.caption(f"The benefit total, the cost total taken out of it, and the net present value that "
+                   f"remains. ${b:,.0f} minus ${c:,.0f} is ${b - c:,.0f}.") 
+
+
+
+
