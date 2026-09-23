@@ -256,9 +256,11 @@ st.divider()
 st.subheader("Visuals")
 
 
-vt1, vt2 = st.tabs(
+vt1, vt2, vt3, vt4 = st.tabs(
     ["Ratio gauge", 
-     "Benefits vs Costs"]
+     "Benefits vs Costs",
+     "Payback year",
+     "Waterfall"]
 )
 
 #VISUAL gauge
