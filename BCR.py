@@ -424,7 +424,7 @@ with vt4:
     font=dict(size=16, color=NAVY)),
                         yaxis=dict(title="Present value (dollars)",
                                    gridcolor=LIGHTISH))
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, use_container_width=True, theme=None)
         st.caption(f"The benefit total, the cost total taken out of it, and the net present value that "
                    f"remains. ${b:,.0f} minus ${c:,.0f} is ${b - c:,.0f}.") 
 
