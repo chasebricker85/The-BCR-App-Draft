@@ -69,18 +69,11 @@ def describe_mode(mode: str, side: str) -> str:
 #PARAMETERS
 with st.sidebar:
     st.header("Analysis parameters")
-
-    b_choice = st.selectbox("Benefits", MODE_LABEL, index=0)
-    benefit_mode = mode_from_label(b_choice)
-
-    c_choice = st.selectbox(
-        "Costs", MODE_LABEL, index=0,
-        help="Research and deployment money is usually spent up front, so this "
-            "starts on the one-time lump sum. Change it only if cost really "
-            "recurs or is spread across the horizon."
-    )
-    cost_mode = mode_from_label(c_choice)
-
+  # Benefits are always one lump sum spread over the horizon; 
+    # costs are always one lump sum in today's dollars.
+    benefit_mode= "spread"
+    cost_mode= "pv"
+  
     st.caption(describe_mode(benefit_mode, "Benefits") + " " + describe_mode(cost_mode, "Costs"))
 
     discount_rate = st.number_input(
