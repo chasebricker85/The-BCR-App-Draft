@@ -335,7 +335,7 @@ with vt3:
         The year the benefit line passes the cost line is the payback year, and it
         is a figure people grasp immediately even when a ratio leaves them cold.
         """
-    FIRST_YEAR = None
+        FIRST_YEAR = None
     
     def _payback_year(res):
       total_cost = res.pv_costs
