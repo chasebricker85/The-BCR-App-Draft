@@ -346,7 +346,7 @@ with vt3:
       cum_b = 0.0
       for row in res.schedule:
         cum_b += row["benefits_pv"]
-          if cum_b>= total_cost:
+        if cum_b>= total_cost:
             return row["year"]
       return None
 
