@@ -200,7 +200,7 @@ with right:
         (label, cost_values[key], pv_cost(cost_values[key]))
         for key, label, _, _ in COST_CATEGORIES
     ]
-    cdf = pd.DataFrame(brows, columns=["Benefit category", "Entered", "Present value"])
+    cdf = pd.DataFrame(crows, columns=["Cost category", "Entered", "Present value"])
     tot_entered = cdf["Entered"].sum()
     tot_pv = cdf["Present value"].sum()
     cdf["Entered"] = cdf["Entered"].map(lambda v: f"${v:,.0f}")
