@@ -417,7 +417,7 @@ with vt4:
             decreasing=dict(marker=dict(color=ORANGE)),
             totals=dict(marker=dict(color=GREEN))))
         fig.update_layout(BASE)
-        fig.update_layout(**BASE, height=400, showlegend="FALSE", 
+        fig.update_layout(**BASE, height=400, showlegend=FALSE, 
                           title=dict(text="How the result is built",
     font=dict(size=16, color=NAVY)),
                         yaxis=dict(title="Present value (dollars)",
